@@ -1,0 +1,145 @@
+import js from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
+import prettier from 'eslint-plugin-prettier';
+
+export default [
+  js.configs.recommended,
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      '*.log',
+      'npm-debug.log*',
+      'yarn-debug.log*',
+      'yarn-error.log*',
+      '.eslintcache',
+      '.cache/**',
+      '.parcel-cache/**',
+      '.next/**',
+      '.nuxt/**',
+      '.vuepress/dist/**',
+      '.serverless/**',
+      '.fusebox/**',
+      '.dynamodb/**',
+      '.yarn/**',
+      '*.tgz',
+      '.pnp.*',
+    ],
+  },
+  {
+    files: ['**/*.js', '**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 2024,
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        module: 'readonly',
+        require: 'readonly',
+        exports: 'readonly',
+      },
+    },
+    plugins: {
+      prettier,
+      import: importPlugin,
+    },
+    rules: {
+      // Prettier integration
+      'prettier/prettier': 'error',
+
+      // Import rules
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
+      'import/no-unresolved': 'error',
+      'import/no-unused-modules': 'error',
+      'import/no-duplicates': 'error',
+
+      // General JavaScript best practices
+      'no-console': 'warn',
+      'no-debugger': 'error',
+      'no-alert': 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-arrow-callback': 'error',
+      'arrow-spacing': 'error',
+      'no-duplicate-imports': 'error',
+      'no-useless-rename': 'error',
+      'object-shorthand': 'error',
+      'prefer-template': 'error',
+      'template-curly-spacing': 'error',
+      'prefer-destructuring': [
+        'error',
+        {
+          array: true,
+          object: true,
+        },
+        {
+          enforceForRenamedProperties: false,
+        },
+      ],
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-undef': 'error',
+      'no-redeclare': 'error',
+      'no-unreachable': 'error',
+      'no-constant-condition': 'error',
+      'no-dupe-keys': 'error',
+      'no-dupe-args': 'error',
+      'no-dupe-class-members': 'error',
+      'no-dupe-else-if': 'error',
+      'no-empty': 'error',
+      'no-extra-boolean-cast': 'error',
+      'no-extra-semi': 'error',
+      'no-func-assign': 'error',
+      'no-import-assign': 'error',
+      'no-invalid-regexp': 'error',
+      'no-irregular-whitespace': 'error',
+      'no-misleading-character-class': 'error',
+      'no-obj-calls': 'error',
+      'no-prototype-builtins': 'error',
+      'no-regex-spaces': 'error',
+      'no-setter-return': 'error',
+      'no-sparse-arrays': 'error',
+      'no-template-curly-in-string': 'error',
+      'no-unexpected-multiline': 'error',
+      'no-unreachable-loop': 'error',
+      'no-unsafe-finally': 'error',
+      'no-unsafe-negation': 'error',
+      'no-unsafe-optional-chaining': 'error',
+      'use-isnan': 'error',
+      'valid-typeof': 'error',
+    },
+  },
+  {
+    files: [
+      '**/*.test.js',
+      '**/*.spec.js',
+      '**/test/**/*.js',
+      '**/tests/**/*.js',
+    ],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+];
