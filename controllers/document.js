@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import handlePDFProcessing from '../services/handlePDFProcessing.js';
+import handlePDFProcessing from '../services/processPdf.js';
 import { error } from '../utils/logger.js';
 
 const documentRouter = Router();
