@@ -25,10 +25,11 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
-app.use(middleware.tokenExtractor);
-app.use('/api/v1/', documentRouter);
-app.use('/api/v1/users', userRouter);
 app.use('/api/v1/login', loginRouter);
+app.use('/api/v1/users', userRouter);
+app.use(middleware.tokenExtractor);
+app.use(middleware.userExtractor);
+app.use('/api/v1/', documentRouter);
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 

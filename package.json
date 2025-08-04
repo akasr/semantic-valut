@@ -31,6 +31,7 @@
     "jsonwebtoken": "^9.0.2",
     "langchain": "^0.3.30",
     "mongoose": "^8.17.0",
+    "ollama": "^0.5.16",
     "pdfjs-dist": "^5.4.54"
   }
 }

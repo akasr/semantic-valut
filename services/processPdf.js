@@ -60,7 +60,7 @@ async function handlePDFProcessing(pdfUrl) {
     throw new Error(`Could not parse PDF: ${err.message}`);
   }
 
-  info('Extracted text content: ', extractedText.substring(0, 200));
+  info('Extracted text content: ', extractedText.substring(0, 100));
   return extractedText;
 }
 
